@@ -54,3 +54,12 @@ development:
 #### 10.docker-compose up -d --build
 
 #### 11.docker-compose down
+
+#### 12.再度コンテナを起動する際は、docker-compose up -d
+※Dockerイメージは5の手順で作成されているため、再度コンテナ起動する際は、--buildオプション不要
+
+#### 13.このアプリのDockerイメージも不要になれば、Dockerイメージ削除
+```
+$ docker images
+$ docker rmi <IMAGE ID>
+```
