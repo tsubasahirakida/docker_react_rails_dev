@@ -71,6 +71,14 @@ development:
 
 rails:[localhost:3000  ](http://localhost:3000/)  
 react:[localhost:8000  ](http://localhost:8000/)  
+mysql:  
+```
+$ docker exec -it typing_db /bin/bash
+※ docker execでコンテナ内に入れる。入るためにbashを使用。
+$ mysql -u root -p
+Enter password: password
+$ SHOW DATABASES;
+```
 
 #### 13.docker-compose down
 
