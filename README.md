@@ -11,7 +11,21 @@
 #### 5.docker-compose run --rm front sh -c 'npx create-react-app front --template typescript'
 → y押す
 
-#### 6.docker-compose.ymlの修正
+#### 6.front側のDockerfileの修正
+
+package.jsonをDockerコンテナ側にマウントする必要があるので、
+下記のCOPY以下の3行をfront側のDockerfileに追記
+
+```
+FROM node:18.17.0-alpine3.18
+WORKDIR /usr/src/app
+
+COPY package.json /usr/src/app
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
+RUN npm install
+```
+
+#### 7.docker-compose.ymlの修正
 
 修正前
 ```
@@ -27,20 +41,6 @@ front:
     build:
       context: ./front/
       dockerfile: Dockerfile
-```
-
-#### 7.front側のDockerfileの修正
-
-package.jsonをDockerコンテナ側にマウントする必要があるので、
-下記のCOPY以下の3行をfront側のDockerfileに追記
-
-```
-FROM node:18.17.0-alpine3.18
-WORKDIR /usr/src/app
-
-COPY package.json /usr/src/app
-ENV PATH /usr/src/app/node_modules/.bin:$PATH
-RUN npm install
 ```
 
 #### 8.mv Dockerfile front/
