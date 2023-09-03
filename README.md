@@ -69,8 +69,8 @@ development:
 
 #### 12.サーバーが立ち上がったか確認
 
-rails:localhost:3000
-react:localhost:8000
+rails:[localhost:3000  ](http://localhost:3000/)  
+react:[localhost:8000  ](http://localhost:8000/)  
 
 #### 13.docker-compose down
 
