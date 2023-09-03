@@ -69,9 +69,9 @@ development:
 
 #### 12.サーバーが立ち上がったか確認
 
-rails ： [localhost:3000  ](http://localhost:3000/)  
-react : [localhost:8000  ](http://localhost:8000/)  
-mysql :  
+rails ：[localhost:3000  ](http://localhost:3000/)  
+react ：[localhost:8000  ](http://localhost:8000/)  
+mysql ：  
 ```
 $ docker exec -it typing_db /bin/bash
 ※ docker execでコンテナ内に入れる。入るためにbashを使用。
