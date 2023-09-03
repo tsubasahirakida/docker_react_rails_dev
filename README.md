@@ -31,15 +31,16 @@ front:
 
 #### 7.front側のDockerfileの修正
 
-package.jsonをDockerコンテナ側にマウントする必要があるので、下記をfront側のDockerfileに追記
+package.jsonをDockerコンテナ側にマウントする必要があるので、
+下記のCOPY以下の3行をfront側のDockerfileに追記
 
 ```
 FROM node:18.17.0-alpine3.18
 WORKDIR /usr/src/app
 
-→ COPY package.json /usr/src/app
-→ ENV PATH /usr/src/app/node_modules/.bin:$PATH
-→ RUN npm install
+COPY package.json /usr/src/app
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
+RUN npm install
 ```
 
 #### 8.mv Dockerfile front/
