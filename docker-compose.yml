@@ -30,7 +30,7 @@ services:
   front: 
     container_name: typing_react
     build:
-      context: ./front/
+      context: ./
       dockerfile: Dockerfile
     volumes:
       - ./front:/usr/src/app/front
