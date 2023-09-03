@@ -81,4 +81,7 @@ react:[localhost:8000  ](http://localhost:8000/)
 ```
 $ docker images
 $ docker rmi <IMAGE ID>
+
+※下記コマンドはイメージ全削除、要注意
+$ docker rmi -f $(docker images -q)
 ```
