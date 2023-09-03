@@ -29,12 +29,25 @@ front:
       dockerfile: Dockerfile
 ```
 
-#### 7.mv Dockerfile front/
+#### 7.front側のDockerfileの修正
 
-#### 8.docker-compose run --rm api bundle exec rails new . --api -d mysql
+package.jsonをDockerコンテナ側にマウントする必要があるので、下記をfront側のDockerfileに追記
+
+```
+FROM node:18.17.0-alpine3.18
+WORKDIR /usr/src/app
+
+→ COPY package.json /usr/src/app
+→ ENV PATH /usr/src/app/node_modules/.bin:$PATH
+→ RUN npm install
+```
+
+#### 8.mv Dockerfile front/
+
+#### 9.docker-compose run --rm api bundle exec rails new . --api -d mysql
 → y押す
 
-#### 9.database.yml書き換え
+#### 10.database.yml書き換え
 
 修正後
 ```
@@ -51,14 +64,19 @@ development:
   database: typing ←
 ```
 
-#### 10.docker-compose up -d --build
+#### 11.docker-compose up -d --build
 
-#### 11.docker-compose down
+#### 12.サーバーが立ち上がったか確認
 
-#### 12.再度コンテナを起動する際は、docker-compose up -d
+rails:localhost:3000
+react:localhost:8000
+
+#### 13.docker-compose down
+
+#### 14.再度コンテナを起動する際は、docker-compose up -d
 ※Dockerイメージは5の手順で作成されているため、再度コンテナ起動する際は、--buildオプション不要
 
-#### 13.このアプリのDockerイメージも不要になれば、Dockerイメージ削除
+#### 15.このアプリのDockerイメージも不要になれば、Dockerイメージ削除
 ```
 $ docker images
 $ docker rmi <IMAGE ID>
